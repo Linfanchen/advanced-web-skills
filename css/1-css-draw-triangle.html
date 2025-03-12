@@ -24,6 +24,40 @@
      -->
 
     <style>
+        :root {
+            --width: 20px;
+        }
+        .container {
+            width: 100%;
+            float: left;
+        }
+        .container::after {
+            clear: both;
+        }
+        .div-wh-0 {
+            width: 0;
+            height: 0;
+            border-left: 50px solid red; /* 其中 50px，是从中心点往左侧延申出去的 */
+            border-top: 20px solid green;
+            border-right: 50px solid yellowgreen;
+            border-bottom: 20px solid palevioletred;
+
+            margin: 30px;
+
+        }
+
+        .div-wh-10 {
+            width: var(--width);
+            height: var(--width);
+            border-left: 50px solid red;
+            border-top: 50px solid green;
+            border-right: 50px solid yellowgreen;
+            border-bottom: 50px solid palevioletred;
+
+            margin: 30px;
+        }
+
+
         .triangle-upward {
             width: 0;
             height: 0;
@@ -60,10 +94,15 @@
 </head>
 
 <body>
-    <div class="triangle-upward">upward</div>
-    <div class="triangle-right">right</div>
-    <div class="triangle-downward">downward</div>
-    <div class="triangle-left">left</div>
+    <div class="container">
+        <div class="div-wh-0">0x0</div>
+        <div class="div-wh-10">10x10</div>
+        <div class="triangle-upward">upward</div>
+        <div class="triangle-right">right</div>
+        <div class="triangle-downward">downward</div>
+        <div class="triangle-left">left</div>
+    </div>
+   
 
 </body>
 
