@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 - CSS绘制三角形</title>
+
+    <!-- 
+        1、将元素的width和height设为0，此时元素内容区域消失，仅剩边框区域参与渲染‌
+        2、当元素宽高为0时，四个边框会以对角线方式交叠，每个边框形成一个等腰直角三角形区域。
+            2.1 当元素有宽高时，边框会围绕内容区域向外延伸，形成矩形包围框。此时，四个边框的边是 ‌垂直/水平‌
+            2.2 元素的 width 和 height 为0时，内容区域坍缩成一个点（即元素的中心点）。此时，边框失去了“依附”的基础，只能从中心点向外扩展。
+            2.3 每个边框的宽度决定了它向外扩展的距离。由于没有内容区域，浏览器会将相邻边框的边缘以 ‌45度对角线‌ 连接，确保四个边框在中心点交汇.(为了确保四个边框的斜边能完美闭合，斜边的角度必须满足)
+
+            每个边框实际上是一个 ‌等腰梯形‌（当元素有宽高时）或 ‌等腰直角三角形‌（当宽高为0时）。
+
+            ‌正常元素‌：边框是梯形（上底=元素宽度，下底=元素宽度+2×边框宽度）。
+            ‌宽高为0时‌：边框退化为直角三角形，底边长度=边框宽度，高度=边框宽度。
+
+            当宽高为0时，四个边框的直角三角形会从中心点向四个方向延伸。它们的斜边必须通过 ‌45度角‌ 连接，否则无法在有限的空间内闭合。
+
+        3、将不需要显示的三边设为透明（transparent），仅保留目标方向的边框颜色，即可显示特定方向的三角形‌。
+     -->
+
+    <style>
+        .triangle-upward {
+            width: 0;
+            height: 0;
+            border-left: 30px solid transparent; /* 三角形的底边，左边组成 */
+            border-right: 30px solid transparent; /* 三角形的底边，右边组成 */
+            border-bottom: 80px solid aquamarine;  /* 三角形的高 */
+            margin: 20px;
+        }
+
+        .triangle-right {
+            width: 0;
+            height: 0;
+            border: 100px solid transparent;
+            border-left-color: skyblue;
+            margin: 20px;
+        }
+
+        .triangle-downward {
+            width: 0;
+            height: 0;
+            border: 100px solid transparent;
+            border-top-color: rebeccapurple;
+            margin: 20px;
+        }
+
+        .triangle-left {
+            width: 0;
+            height: 0;
+            border: 100px solid transparent;
+            border-right-color: blue;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="triangle-upward">upward</div>
+    <div class="triangle-right">right</div>
+    <div class="triangle-downward">downward</div>
+    <div class="triangle-left">left</div>
+
+</body>
+
+</html>
