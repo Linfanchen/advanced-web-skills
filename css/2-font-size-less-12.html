@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设置字体小于12px</title>
+
+    <style>
+        .container {
+            color: #000;
+
+        }
+
+        .text-1 {
+            font-size: 30px;
+            width: 100px;
+        }
+
+        .text-2 {
+            font-size: 30px;
+            transform: scale(0.5);
+            -webkit-transform: scale(0.5);
+            display: block; /* 必须的 */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <span class="text-1">常规字体</span>
+        <span class="text-2">小号码字体</span>
+    </div>
+    
+</body>
+</html>

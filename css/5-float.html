@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS浮动示例</title>
+  <style>
+    /* 定义容器样式 */
+    /* 在CSS中，当一个元素的子元素都设置了浮动（如float: left或float: right）时，这些浮动元素会脱离正常的文档流。
+    这意味着父元素不会再自动根据子元素的高度来调整自身的高度，从而导致父元素的高度塌陷，即父元素的高度变为0（如果没有其他内容撑起高度的话）。
+    为了解决这个问题，可以在父元素上使用`overflow: auto`或`overflow: hidden`。
+    当设置`overflow: auto`时，父元素会创建一个新的块级格式化上下文（BFC）。
+    块级格式化上下文会包含浮动元素，使得父元素能够正确地包含浮动的子元素，从而恢复其高度，确保布局的稳定性。
+    在这个例子中，`.container`类的元素加上`overflow: auto`就是为了防止由于浮动子元素导致的高度塌陷问题。 */
+    .container {
+      border: 2px solid #333;
+      padding: 10px;
+      overflow: auto;
+    }
+
+    /* 定义浮动元素样式 */
+    .float-left {
+      float: left;
+      width: 100px;
+      height: 100px;
+      background-color: #ff9999;
+      margin: 10px;
+    
+    }
+
+    .float-right {
+      float: right;
+      width: 100px;
+      height: 100px;
+      background-color: #99ff99;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- 新增的不浮动的div -->
+    <div style="width: 100px; height: 100px; background-color: #9999ff; margin: 10px;">不浮动，独占一行</div>
+    <!-- 左浮动元素 -->
+    <div class="float-left">左浮动</div>
+    <!-- 右浮动元素 -->
+    <div class="float-right">右浮动</div>
+    <p>这是一段普通文本，用于展示浮动元素对周围元素的影响。浮动元素会脱离正常的文档流，周围的文本和其他元素会环绕在其周围。在网页布局中，浮动是一种非常实用的技术，它可以让元素按照我们的意愿排列，从而实现各种复杂的布局效果。例如，我们可以使用浮动来创建多列布局，将不同的内容分别放置在不同的列中，使页面更加清晰和有条理。同时，浮动元素的宽度和高度可以根据需要进行调整，以适应不同的设计需求。然而，浮动也会带来一些问题，比如父元素高度塌陷的问题。当所有子元素都浮动时，父元素会失去对它们的高度控制，导致布局出现异常。为了解决这个问题，我们可以使用清除浮动的方法，例如在父元素中添加 `overflow: auto` 或者使用 `clearfix` 类。通过这些方法，我们可以确保父元素能够正确地包含浮动元素，从而保持布局的稳定性。</p>
+  </div>
+</body>
+
+</html>

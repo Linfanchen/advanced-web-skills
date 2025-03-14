@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品字布局</title>
+
+    <style>
+        body,html {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height:100vh;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* 铺满视口  */
+        }
+
+        /*
+        *- 总高度计算 ：在flex容器中，默认使用 box-sizing: content-box ，
+        元素实际占位高度 = 内容高度 + padding + border
+-       flex项目分配 ： .top 元素的 flex:1 会使其尝试平分剩余空间，但padding会增加元素的实际占位高度
+-       视觉表现 ：当前设置会导致顶部栏比底部区域多出40px高度（上下padding各20px）
+        */
+        .top {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            flex: 1;
+        }
+
+        .bottom {
+         display: flex;
+         flex: 1;       
+        }
+
+        .left {
+         background-color: #2196F3;       
+         color: white;
+         text-align: center;
+         padding: 20px;
+         font-size: 24px;
+         flex: 1;
+        }
+
+        .right {
+            background-color: #FFC107;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            flex: 1;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="top">顶部区域</div>
+        <div class="bottom">
+            <div class="left">左下区域</div>
+            <div class="right">右下区域</div>
+        </div>
+    </div>
+    
+</body>
+</html>
