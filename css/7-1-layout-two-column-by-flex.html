@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex 方式实现两栏布局（左边固定 + 右边自适应）</title>
+
+    <style>
+        .container {
+            display: flex;
+            height: 80vh;
+            flex-direction: row;
+        }
+
+        .main {
+            background-color: blueviolet;
+            height: 80vh;
+            flex:1;
+            padding: 20px;
+            margin-left: 20px;
+        }
+
+        .sidebar {
+            background-color: aquamarine;
+            width: 200px;
+            height: 80vh;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="sidebar">侧边栏</div>
+        <div class="main">主内容区域</div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position + Margin 实现三栏布局</title>
+    <style>
+        .container {
+            position: relative;
+            height: 80vh;
+        }
+        .left {
+            position: absolute;
+            width: 200px;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: lightblue;
+        }
+
+        .right {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 200px; /* 右侧栏固定宽度 */
+            height: 100%;
+            background-color: lightcoral;
+
+        }
+
+        .middle {
+            margin-left: 200px; /* 左侧栏宽度 */;
+            margin-right: 200px; /* 右侧栏宽度 */;
+            background-color: lightgreen;
+            height: 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="left">Left</div>
+        <div class="middle">Middle</div>
+        <div class="right">Right</div>
+    </div>
+    
+</body>
+</html>
