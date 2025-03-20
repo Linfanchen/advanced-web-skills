@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多块级元素水平居中</title>
+
+    <style>
+        /**
+        * 适用于多个块级元素在同一行中水平居中。
+        */
+        .container {
+            height: 100px;
+            padding: 8px;
+            text-align: center;
+            border: 2px dashed #f69c55;
+        }
+
+        .inline-block {
+            display: inline-block;
+            width: 4rem;
+            margin: 0 8px;
+            color: #fff;
+            background: #000;
+        }
+        span {
+            display: block;
+            font-size: large;
+            font-weight: bolder;
+            margin-top: 15px;
+        }
+
+        .container-2 {
+            display: flex;
+            justify-content: center;
+            border: 2px dashed #f69c55;
+            margin-top: 30px;
+            height: 150px;
+            align-items: center;
+        }
+
+       .container-2 div {
+        padding: 8px;
+            width: 6rem;
+            margin: 0 8px;
+            color: #fff;
+            background: #000; 
+            height: 50px;
+       }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="inline-block">块级元素 1</div>
+        <div class="inline-block">块级元素 2</div>
+        <div class="inline-block">块级元素 3</div>
+        <span>利用 inline-block</span>
+    </div>
+
+    <div class="container-2">
+        <div>块级元素 1</div>
+        <div>块级元素 2</div>
+        <div>块级元素 3</div>
+       
+    </div>
+    
+</body>
+</html>

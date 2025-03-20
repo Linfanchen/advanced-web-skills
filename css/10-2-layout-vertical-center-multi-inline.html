@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多行元素垂直居中</title> 
+
+    <style>
+        .container-1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 2px dashed #f69c55;
+        }
+
+        .container-2 {
+            display: table;
+            height: 200px;
+            border: 2px dashed #f69c55;
+            margin-top: 30px;
+        }
+
+        .v-cell {
+            display: table-cell;
+            vertical-align: middle; 
+        }
+
+        .container-3 {
+            position: relative;
+            height: 200px;
+            margin-top: 30px;
+            border: 2px dashed #f69c55;
+            text-align: center;
+        }
+        .container-3::before {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            width: 1%;
+            vertical-align: middle;
+        }
+
+        .container-3 p {
+            display: inline-block;
+            vertical-align: middle;
+            width: 20rem;
+            color: #fff;
+            background-color: #000;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container-1">
+        <p>利用 flex 布局</p>
+    </div>
+
+    <div class="container-2">
+        <p class="v-cell">利用表布局（table）</p>
+    </div>
+
+    <div class="container-3">
+        <p>多行内联元素垂直居中-伪元素，这种方法通过在父容器中插入一个伪元素（::before），并利用 vertical-align: middle 属性来实现垂直居中。</p>
+    </div>
+    
+</body>
+</html>
