@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>纯 CSS 全屏滚动</title>
+    <style>
+      /* 基础样式重置 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* 设置滚动容器 */
+      html {
+        scroll-snap-type: y mandatory; /* 垂直方向强制吸附 */
+        scroll-behavior: smooth; /* 平滑滚动（可选） */
+        overflow-y: scroll; /* 启用滚动条 */
+        height: 100vh; /* 视口高度 */
+      }
+
+      /* 每个全屏页面 */
+      section {
+        height: 100vh; /* 每个 section 占满视口 */
+        scroll-snap-align: start; /* 滚动时对齐起始位置 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        color: white;
+      }
+
+      /* 为每个 section 设置不同背景色 */
+      #section1 {
+        background-color: #ff6b6b;
+      }
+      #section2 {
+        background-color: #4ecdc4;
+      }
+      #section3 {
+        background-color: #45b7d1;
+      }
+      #section4 {
+        background-color: #ffbe0b;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 全屏滚动页面 -->
+    <section id="section1">第一屏</section>
+    <section id="section2">第二屏</section>
+    <section id="section3">第三屏</section>
+    <section id="section4">第四屏</section>
+  </body>
+</html>

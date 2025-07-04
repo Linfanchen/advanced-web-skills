@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>流光按钮</title>
+    <style>
+      /* 初始化取消页面的内外边距 */
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      /* 弹性布局让页面元素垂直+水平居中 */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* 让页面占屏幕总高 */
+        background-color: #000;
+      }
+
+      /* 按钮样式 */
+      a {
+        position: relative; /* 相对定位 */
+        width: 400px;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 24px;
+        color: #fff;
+        border-radius: 50px; /* 圆角属性 */
+        background-image: linear-gradient(
+          to right,
+          #03a9f4,
+          #f441a5,
+          #ffeb3b,
+          #09a8f4
+        ); /* 背景渐变色 */
+        background-size: 400%; /* 背景渐变色大小 */
+        z-index: 1;
+      }
+
+      /* 发光效果 */
+      a::before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        bottom: -5px;
+        left: -5px;
+        right: -5px;
+        border-radius: 50px;
+        background-image: linear-gradient(
+          to right,
+          #03a9f4,
+          #f441a5,
+          #ffeb3b,
+          #09a8f4
+        ); /* 背景渐变色 */
+        background-size: 400%; /* 背景渐变色大小 */
+        z-index: -1;
+        filter: blur(20px); /* 设置模糊度显示发光效果 */
+      }
+
+      /* 鼠标悬停时的动画效果 */
+      a:hover {
+        animation: sun 8s infinite; /* 动画名称 时间 infinite 是无限次播放 */
+      }
+
+      a:hover::before {
+        animation: sun 8s infinite; /* 动画名称 时间 infinite 是无限次播放 */
+      }
+
+      /* 动画定义 */
+      @keyframes sun {
+        100% {
+          background-position: -400% 0; /* 背景位置 */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#">流光按钮</a>
+  </body>
+</html>

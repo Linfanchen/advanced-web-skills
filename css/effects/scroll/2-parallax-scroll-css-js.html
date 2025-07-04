@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>视差滚动</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        overflow: hidden;
+      }
+      body {
+        height: 100vh;
+        perspective: 100px;
+        transform-style: preserve-3d;
+        overflow-y: auto;
+      }
+      .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .list-item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 45vh;
+        overflow: hidden;
+      }
+      .list-item:hover .item-image::before {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+      .item-image {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        transform: translateZ(-50px) scale(2.4);
+      }
+      .item-image::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        transition: all 0.3s ease;
+      }
+      .item-image img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .item-text {
+        color: #fff;
+        text-align: center;
+        font-family: "Courier New", Courier, monospace;
+      }
+      .text-title {
+        font-size: 2rem;
+        font-weight: bolder;
+        margin-bottom: 20px;
+      }
+      .text-desc {
+        font-size: 1.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="list-item">
+        <div class="item-image">
+          <img
+            src="https://cdn.fcsaas.com/blog/mysql-basic-2025-07-04-13-21-15.png"
+            alt="Nature"
+          />
+        </div>
+        <div class="item-text">
+          <div class="text-title">CSS3D动画</div>
+          <div class="text-desc">
+            采用 animation + transition 组合完成各种动画加过渡效果
+          </div>
+        </div>
+      </div>
+      <div class="list-item">
+        <div class="item-image">
+          <img
+            src="https://cdn.fcsaas.com/blog/mysql-basic-2025-07-04-13-21-15.png"
+            alt="City"
+          />
+        </div>
+        <div class="item-text">
+          <div class="text-title">CSS3D动画</div>
+          <div class="text-desc">
+            采用 animation + transition 组合完成各种动画加过渡效果
+          </div>
+        </div>
+      </div>
+      <div class="list-item">
+        <div class="item-image">
+          <img
+            src="https://cdn.fcsaas.com/blog/mysql-basic-2025-07-04-13-21-15.png"
+            alt="Technology"
+          />
+        </div>
+        <div class="item-text">
+          <div class="text-title">CSS3D动画</div>
+          <div class="text-desc">
+            采用 animation + transition 组合完成各种动画加过渡效果
+          </div>
+        </div>
+      </div>
+      <div class="list-item">
+        <div class="item-image">
+          <img
+            src="https://cdn.fcsaas.com/blog/mysql-basic-2025-07-04-13-21-15.png"
+            alt="Space"
+          />
+        </div>
+        <div class="item-text">
+          <div class="text-title">CSS3D动画</div>
+          <div class="text-desc">
+            采用 animation + transition 组合完成各种动画加过渡效果
+          </div>
+        </div>
+      </div>
+      <div class="list-item">
+        <div class="item-image">
+          <img
+            src="https://cdn.fcsaas.com/blog/mysql-basic-2025-07-04-13-21-15.png"
+            alt="Ocean"
+          />
+        </div>
+        <div class="item-text">
+          <div class="text-title">CSS3D动画</div>
+          <div class="text-desc">
+            采用 animation + transition 组合完成各种动画加过渡效果
+          </div>
+        </div>
+      </div>
+      <div class="list-item">
+        <div class="item-image">
+          <img
+            src="https://cdn.fcsaas.com/blog/mysql-basic-2025-07-04-13-21-15.png"
+            alt="Mountain"
+          />
+        </div>
+        <div class="item-text">
+          <div class="text-title">CSS3D动画</div>
+          <div class="text-desc">
+            采用 animation + transition 组合完成各种动画加过渡效果
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

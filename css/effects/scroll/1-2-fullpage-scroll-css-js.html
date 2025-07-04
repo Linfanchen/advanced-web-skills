@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>全屏滚动效果</title>
+    <style>
+      /* 基础样式重置 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* 设置html和body高度为100% */
+      html,
+      body {
+        height: 100%;
+        overflow: hidden; /* 隐藏默认滚动条 */
+      }
+
+      /* 全屏容器样式 */
+      .fullpage-container {
+        height: 100vh; /* 视口高度 */
+        width: 100vw; /* 视口宽度 */
+        position: relative; /* 相对定位 */
+        overflow: hidden; /* 隐藏溢出内容 */
+      }
+
+      /* 每个屏幕的公共样式 */
+      .section {
+        width: 100%;
+        height: 100vh; /* 每个section占满整个视口 */
+        position: absolute; /* 绝对定位 */
+        top: 0;
+        left: 0;
+        transition: transform 1s ease-in-out; /* 添加过渡动画 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        color: white;
+      }
+
+      /* 为每个section设置不同背景色 */
+      #section1 {
+        background-color: #ff6b6b;
+        transform: translateY(0%);
+      }
+      #section2 {
+        background-color: #4ecdc4;
+        transform: translateY(100%);
+      }
+      #section3 {
+        background-color: #45b7d1;
+        transform: translateY(200%);
+      }
+      #section4 {
+        background-color: #ffbe0b;
+        transform: translateY(300%);
+      }
+
+      /* 导航点样式 */
+      .nav-dots {
+        position: fixed;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 100;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        margin: 10px 0;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .dot.active {
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 全屏滚动容器 -->
+    <div class="fullpage-container" id="container">
+      <!-- 四个全屏section -->
+      <div class="section" id="section1">第一屏</div>
+      <div class="section" id="section2">第二屏</div>
+      <div class="section" id="section3">第三屏</div>
+      <div class="section" id="section4">第四屏</div>
+    </div>
+
+    <!-- 导航点 -->
+    <div class="nav-dots" id="navDots">
+      <div class="dot active" data-index="0"></div>
+      <div class="dot" data-index="1"></div>
+      <div class="dot" data-index="2"></div>
+      <div class="dot" data-index="3"></div>
+    </div>
+
+    <script>
+      // 获取DOM元素
+      const container = document.getElementById("container");
+      const sections = document.querySelectorAll(".section");
+      const dots = document.querySelectorAll(".dot");
+      let currentIndex = 0; // 当前显示的section索引
+
+      // 更新section位置
+      function updateSections() {
+        sections.forEach((section, index) => {
+          // 计算每个section的偏移量
+          const offset = (index - currentIndex) * 100;
+          section.style.transform = `translateY(${offset}%)`;
+        });
+
+        // 更新导航点状态
+        updateDots();
+      }
+
+      // 更新导航点状态
+      function updateDots() {
+        dots.forEach((dot, index) => {
+          if (index === currentIndex) {
+            dot.classList.add("active");
+          } else {
+            dot.classList.remove("active");
+          }
+        });
+      }
+
+      // 滚动到指定索引的section
+      function scrollTo(index) {
+        // 限制索引范围
+        index = Math.max(0, Math.min(index, sections.length - 1));
+
+        if (index !== currentIndex) {
+          currentIndex = index;
+          updateSections();
+        }
+      }
+
+      // 鼠标滚轮事件
+      window.addEventListener(
+        "wheel",
+        (e) => {
+          // 阻止默认滚动行为
+          e.preventDefault();
+
+          // 判断滚动方向
+          if (e.deltaY > 0) {
+            // 向下滚动，显示下一个section
+            scrollTo(currentIndex + 1);
+          } else {
+            // 向上滚动，显示上一个section
+            scrollTo(currentIndex - 1);
+          }
+        },
+        { passive: false }
+      );
+
+      // 触摸事件处理
+      let startY = 0;
+      container.addEventListener(
+        "touchstart",
+        (e) => {
+          startY = e.touches[0].clientY;
+        },
+        { passive: true }
+      );
+
+      container.addEventListener(
+        "touchmove",
+        (e) => {
+          e.preventDefault();
+          const moveY = e.touches[0].clientY;
+          const diff = startY - moveY;
+
+          // 滑动距离大于50px才触发切换
+          if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+              // 向上滑动，显示下一个section
+              scrollTo(currentIndex + 1);
+            } else {
+              // 向下滑动，显示上一个section
+              scrollTo(currentIndex - 1);
+            }
+            startY = moveY;
+          }
+        },
+        { passive: false }
+      );
+
+      // 导航点点击事件
+      dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          const index = parseInt(dot.getAttribute("data-index"));
+          scrollTo(index);
+        });
+      });
+
+      // 初始化
+      updateSections();
+    </script>
+  </body>
+</html>
