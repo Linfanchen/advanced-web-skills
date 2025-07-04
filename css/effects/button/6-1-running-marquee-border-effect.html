@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>跑马灯边框效果</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #2f2424;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 400px;
+        width: 400px;
+        margin: auto;
+        border: solid 1px;
+        text-align: center;
+      }
+      .horse_run {
+        background-image: linear-gradient(
+            90deg,
+            rgba(196, 233, 64, 0) 0%,
+            green 40%,
+            orange 40% 70%,
+            red 70% 100%
+          ),
+          linear-gradient(
+            0deg,
+            red 30%,
+            orange 30% 60%,
+            green 60%,
+            rgba(196, 233, 64, 0) 100%
+          ),
+          linear-gradient(
+            -90deg,
+            rgba(196, 233, 64, 0) 0%,
+            green 40%,
+            orange 40% 70%,
+            red 70% 100%
+          ),
+          linear-gradient(
+            0deg,
+            rgba(196, 233, 64, 0) 0%,
+            green 40%,
+            orange 40% 70%,
+            red 70% 100%
+          );
+        background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+        background-size: 100px 4px, 4px 100px, 100px 4px, 4px 100px;
+        background-position: -100px 0px, calc(100% - 0px) -100px,
+          calc(100% + 100px) calc(100% - 0px), 0px 0px;
+        animation: moveLine 6s infinite linear;
+        background-clip: content-box;
+      }
+      @keyframes moveLine {
+        0% {
+          background-position: -100px 0px, calc(100% - 0px) -100px,
+            calc(100% + 100px) calc(100% - 0px), 0px 0px;
+        }
+        5% {
+          background-position: 0px 0px, calc(100% - 0px) -100px,
+            calc(100% + 100px) calc(100% - 0px), 0px -100px;
+        }
+        30% {
+          background-position: 100% 0px, calc(100% - 0px) -100px,
+            calc(100% + 100px) calc(100% - 0px), 0px -100px;
+        }
+        35% {
+          background-position: calc(100% + 100px) 0px, calc(100% - 0px) 0px,
+            calc(100% + 100px) calc(100% - 0px), 0px -100px;
+        }
+        50% {
+          background-position: calc(100% + 100px) 0px, calc(100% - 0px) 100%,
+            calc(100% + 100px) calc(100% - 0px), -100px -100px;
+        }
+        55% {
+          background-position: calc(100% + 100px) 0px,
+            calc(100% - 0px) calc(100% + 100px), 100% calc(100% - 0px),
+            -100px calc(100% + 100px);
+        }
+        80% {
+          background-position: calc(100% + 100px) 0px,
+            calc(100% - 0px) calc(100% + 100px), 0px calc(100% - 0px),
+            0px calc(100% + 100px);
+        }
+        85% {
+          background-position: calc(100% + 100px) 0px,
+            calc(100% - 0px) calc(100% + 100px), -100px calc(100% - 0px),
+            0px 100%;
+        }
+        100% {
+          background-position: calc(100% + 100px) 0px,
+            calc(100% - 0px) calc(100% + 100px), -100px calc(100% - 0px),
+            0px 0px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box horse_run">
+      <img
+        alt="图片"
+        src="https://profile-avatar.csdnimg.cn/16a636bfaafa4441b119d1c92e27651e_tianxintiandisheng.jpg!1"
+      />
+    </div>
+  </body>
+</html>
