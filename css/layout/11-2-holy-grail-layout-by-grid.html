@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid 圣杯布局</title>
+    <style>
+      body {
+        margin: 0;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        min-height: 100vh;
+      }
+      header,
+      footer {
+        background: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+      .container {
+        display: grid;
+        grid-template-columns: 200px 1fr 200px;
+      }
+      .main {
+        background: #f0f0f0;
+      }
+      .left {
+        background: #ff9999;
+      }
+      .right {
+        background: #99ff99;
+      }
+
+      /* 响应式适配 */
+      @media (max-width: 768px) {
+        .container {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto 1fr auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>头部</header>
+    <div class="container">
+      <div class="left">左侧边栏</div>
+      <main class="main">中间内容（无需调整HTML顺序）</main>
+      <div class="right">右侧边栏</div>
+    </div>
+    <footer>底部</footer>
+  </body>
+</html>

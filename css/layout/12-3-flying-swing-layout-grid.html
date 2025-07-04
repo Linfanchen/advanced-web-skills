@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Grid 双飞翼布局</title>
+    <style>
+      body {
+        margin: 0;
+        display: grid;
+        grid-template-rows: auto 1fr auto; /* 头-中-脚 */
+        min-height: 100vh;
+      }
+      header,
+      footer {
+        background: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+      /* 关键代码 */
+      .container {
+        display: grid;
+        grid-template-columns: 1fr; /* 默认单列（移动端） */
+      }
+      @media (min-width: 768px) {
+        .container {
+          grid-template-columns: 200px 1fr 200px; /* 左-中-右 */
+          grid-template-areas: "left main right"; /* 命名网格区域 */
+        }
+        .left {
+          grid-area: left;
+        }
+        .main {
+          grid-area: main;
+          margin: 0 20px; /* 保留双飞翼的留白特性 */
+        }
+        .right {
+          grid-area: right;
+        }
+      }
+      .main {
+        background: #f0f0f0;
+        min-height: 300px;
+      }
+      .left {
+        background: #ff9999;
+      }
+      .right {
+        background: #99ff99;
+      }
+    </style>
+  </head>
+  <body>
+    <header>头部</header>
+    <div class="container">
+      <!-- 中间内容依然在HTML中优先 -->
+      <main class="main">中间内容（优先渲染）</main>
+      <div class="left">左侧边栏</div>
+      <div class="right">右侧边栏</div>
+    </div>
+    <footer>底部</footer>
+  </body>
+</html>

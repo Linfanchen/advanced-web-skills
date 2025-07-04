@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>圣杯布局</title>
+    <style>
+      /* 基础重置 */
+      body {
+        margin: 0;
+        padding: 0;
+        min-width: 600px; /* 确保左右栏不被挤压 */
+      }
+
+      /* 头部和底部 */
+      header,
+      footer {
+        height: 60px;
+        background: #333;
+        color: white;
+        text-align: center;
+        line-height: 60px;
+      }
+
+      /* 主体容器 */
+      .container {
+        padding: 0 200px; /* 左右栏的宽度 */
+        overflow: hidden; /* 清除浮动 */
+      }
+
+      /* 中间内容（优先渲染） */
+      .main {
+        float: left;
+        width: 100%;
+        height: 300px;
+        background: #f0f0f0;
+      }
+
+      /* 左侧栏 */
+      .left {
+        float: left;
+        width: 200px;
+        height: 300px;
+        background: #ff9999;
+        margin-left: -100%; /* 关键：移动到上一行的最左侧 */
+        position: relative;
+        left: -200px; /* 再向左移动自身宽度 */
+      }
+
+      /* 右侧栏 */
+      .right {
+        float: left;
+        width: 200px;
+        height: 300px;
+        background: #99ff99;
+        margin-left: -200px; /* 关键：直接左移自身宽度 */
+        position: relative;
+        right: -200px; /* 再向右移动自身宽度 */
+      }
+    </style>
+  </head>
+  <body>
+    <header>头部</header>
+    <div class="container">
+      <div class="main">中间内容（优先渲染）</div>
+      <div class="left">左侧边栏</div>
+      <div class="right">右侧边栏</div>
+    </div>
+    <footer>底部</footer>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>双飞翼布局（浮动实现）</title>
+    <style>
+      body {
+        margin: 0;
+        min-width: 600px; /* 防止挤压 */
+      }
+      header,
+      footer {
+        height: 60px;
+        background: #333;
+        color: white;
+        text-align: center;
+        line-height: 60px;
+      }
+      /* 关键代码 */
+      .main-wrap {
+        float: left;
+        width: 100%;
+      }
+      .main {
+        height: 300px;
+        background: #f0f0f0;
+        margin: 0 200px; /* 左右留白 */
+      }
+      .left {
+        float: left;
+        width: 200px;
+        height: 300px;
+        background: #ff9999;
+        margin-left: -100%; /* 左移整行宽度 */
+      }
+      .right {
+        float: left;
+        width: 200px;
+        height: 300px;
+        background: #99ff99;
+        margin-left: -200px; /* 左移自身宽度 */
+      }
+      .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <header>头部</header>
+    <div class="container clearfix">
+      <div class="main-wrap">
+        <div class="main">中间内容（优先渲染）</div>
+      </div>
+      <div class="left">左侧边栏</div>
+      <div class="right">右侧边栏</div>
+    </div>
+    <footer>底部</footer>
+  </body>
+</html>
